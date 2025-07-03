@@ -1,9 +1,6 @@
 name: Renzo
 
 spring:
-  application:
-    name: employee-service
-    
   datasource:
     url: jdbc:postgresql://localhost:5432/employee_database
     username: postgres
