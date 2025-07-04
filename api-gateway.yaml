@@ -1,4 +1,5 @@
 name: Renzo
+
 server:
   port: 8085
 
@@ -21,8 +22,6 @@ spring:
       name: admin
       password: admin
       roles: ADMIN
-
-  spring:
   cloud:
     gateway:
       server:
@@ -40,7 +39,6 @@ spring:
                   args:
                     name: employeeCircuitBreaker
                     fallbackUri: forward:/fallback
-
 
 resilience4j:
   circuitbreaker:
