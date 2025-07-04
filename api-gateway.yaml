@@ -37,11 +37,11 @@ spring:
                   args:
                     name: employeeCircuitBreaker
                     fallbackUri: forward:/fallback
-    security:
-    oauth2:
-      resourceserver:
-        jwt:
-          secret: myjwtsecret
+    # security:
+    # oauth2:
+    #   resourceserver:
+    #     jwt:
+    #       secret: myjwtsecret
 
 resilience4j:
   circuitbreaker:
