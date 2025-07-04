@@ -1,14 +1,6 @@
 server:
   port: 8080
 
-spring:
-  security:
-    user:
-      name: admin
-      password: admin
-      roles: ADMIN
-
-
 springdoc:
   swagger-ui:
     enabled: true
@@ -20,10 +12,14 @@ springdoc:
   api-docs:
     enabled: true
 
-
 spring:
   application:
     name: api-gateway
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: ADMIN
 
   cloud:
     gateway:
