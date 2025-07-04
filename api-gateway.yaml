@@ -22,6 +22,7 @@ spring:
       password: admin
       roles: ADMIN
 
+  spring:
   cloud:
     gateway:
       server:
@@ -30,13 +31,16 @@ spring:
             - id: employee-service
               uri: lb://employee-service
               predicates:
-                - Path=/employee-service/**, /v3/api-docs/employee, /swagger-ui/**
+                - Path=/employee-service/**
+                - Path=/v3/api-docs/employee
+                - Path=/swagger-ui/**
               filters:
                 - RewritePath=/employee-service/(?<segment>.*), /${segment}
                 - name: CircuitBreaker
                   args:
                     name: employeeCircuitBreaker
                     fallbackUri: forward:/fallback
+
 
 resilience4j:
   circuitbreaker:
