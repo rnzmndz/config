@@ -1,6 +1,6 @@
 name: Renzo
 server:
-  port: 8080
+  port: 8085
 
 springdoc:
   swagger-ui:
