@@ -3,14 +3,10 @@ server:
 
 springdoc:
   swagger-ui:
-    enabled: true
     urls:
       - name: employee-service
-        url: /v3/api-docs/employee
-      - name: inventory-service
-        url: /v3/api-docs/inventory
-  api-docs:
-    enabled: true
+        url: /public/v3/api-docs/employee
+
 
 spring:
   application:
