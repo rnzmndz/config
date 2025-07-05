@@ -24,13 +24,19 @@ spring:
         - id: employee-service
           uri: lb://employee-service
           predicates:
-            - Path=/employee-service/**, /public/swagger-ui/**, /public/v3/api-docs/**
+            - Path=/employee-service/**
           filters:
             - RewritePath=/employee-service/(?<segment>.*), /${segment}
             - name: CircuitBreaker
               args:
                 name: employeeCircuitBreaker
                 fallbackUri: forward:/fallback
+        - id: employee-service-swagger
+          uri: lb://employee-service
+          predicates:
+            - Path=/public/swagger-ui/**, /public/v3/api-docs/**
+          filters:
+            - RewritePath=/public/(?<segment>.*), /${segment}
     security:
       oauth2:
         client:
