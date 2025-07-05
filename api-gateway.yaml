@@ -24,8 +24,8 @@ spring:
     gateway:
       server:
         webflux:
-          default-filters:
-          - TokenRelay
+          # default-filters:
+          # - TokenRelay
           routes:
             - id: employee-service
               uri: lb://employee-service
