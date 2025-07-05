@@ -20,8 +20,10 @@ server:
   port: 8081
 
 springdoc:
-  api-docs:
-    path: /v3/api-docs/employee
+  group-configs:
+    - group: employee
+      paths-to-match: /api/v1/employees/**
+
 
 management:
   endpoints:
