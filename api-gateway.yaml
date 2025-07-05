@@ -30,7 +30,7 @@ spring:
               args:
                 name: employeeCircuitBreaker
                 fallbackUri: forward:/fallback
-        - id: employee-service-swagger
+         - id: employee-swagger
           uri: lb://employee-service
           predicates:
             - Path=/public/swagger-ui/**, /public/v3/api-docs/**
