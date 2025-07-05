@@ -29,8 +29,6 @@ spring:
           uri: lb://employee-service
           predicates:
             - Path=/employee-service/**
-            - Path=/v3/api-docs/employee
-            - Path=/swagger-ui/**
           filters:
             - RewritePath=/employee-service/(?<segment>.*), /${segment}
             - name: CircuitBreaker
