@@ -10,8 +10,6 @@ springdoc:
 
 spring:
   application:
-    profile:
-      active: dev
     name: api-gateway
   security:
     user:
