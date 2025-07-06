@@ -6,8 +6,6 @@ eureka:
     prefer-ip-address: true
     
 spring:
-  profiles:
-    active: dev
   security:
     oauth2:
       resourceserver:
