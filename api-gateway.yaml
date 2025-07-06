@@ -21,6 +21,10 @@ spring:
       default-filters:
         - TokenRelay
       routes:
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
         - id: employee-service
           uri: lb://employee-service
           predicates:
