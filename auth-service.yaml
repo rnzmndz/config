@@ -1,3 +1,6 @@
+server:
+  port: 8082
+
 keycloak:
   token-uri: http://localhost:8180/realms/myrealm/protocol/openid-connect/token
   client-id: spring-gateway
