@@ -1,0 +1,4 @@
+keycloak:
+  token-uri: http://localhost:8180/realms/myrealm/protocol/openid-connect/token
+  client-id: spring-gateway
+  client-secret: SiZ1oOLaSgnu3KEWbqb2FeqAyQV8rkBg
