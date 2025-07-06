@@ -9,6 +9,8 @@ springdoc:
 
 
 spring:
+  profiles:
+    active: dev
   application:
     name: api-gateway
   security:
