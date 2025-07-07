@@ -1,4 +1,6 @@
-name: Renzo
+springdoc:
+  api-docs:
+    path: /
 
 spring:
   datasource:
