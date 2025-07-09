@@ -5,3 +5,19 @@ keycloak:
   token-uri: http://localhost:8180/realms/myrealm/protocol/openid-connect/token
   client-id: spring-gateway
   client-secret: SiZ1oOLaSgnu3KEWbqb2FeqAyQV8rkBg
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auth_database
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
