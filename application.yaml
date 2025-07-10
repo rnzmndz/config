@@ -45,3 +45,10 @@ logging:
     org.springframework.web.client.RestTemplate: DEBUG
     org.springframework.web: DEBUG
     feign: DEBUG
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 3000
+        readTimeout: 5000
