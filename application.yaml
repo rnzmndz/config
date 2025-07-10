@@ -9,6 +9,9 @@ services:
     port: 8081
   employee-service:
     port: 8082
+
+employee-service:
+  token: Bearer service-token-12345-secret
   
 eureka:
   client:
