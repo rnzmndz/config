@@ -37,4 +37,4 @@ spring:
             token-uri: http://localhost:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
         resourceserver:
           jwt:
-            issuer-uri: http://${services.keycloak.port}/realms/myrealm
+            issuer-uri: http://localhost:${services.keycloak.port}/realms/myrealm
