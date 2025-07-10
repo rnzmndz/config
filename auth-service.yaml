@@ -2,9 +2,9 @@ server:
   port: ${services.auth-service.port}
 
 keycloak:
-  token-uri: http://localhost:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
-  client-id: spring-gateway
-  client-secret: SiZ1oOLaSgnu3KEWbqb2FeqAyQV8rkBg
+  token-uri: ${spring.security.oauth2.client.registration.provider.keycloak.issure-uri}/protocol/openid-connect/token
+  client-id: ${spring.security.oauth2.client.registration.keycloak.client-id}
+  client-secret: ${spring.security.oauth2.client.registration.keycloak.client-secret}
 
 spring:
   datasource:
