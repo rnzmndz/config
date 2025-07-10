@@ -28,3 +28,14 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:${services.keycloak.port}/realms/myrealm
+      client:
+        registration:
+          keycloak:
+            client-id: spring-gateway
+            client-secret: SiZ1oOLaSgnu3KEWbqb2FeqAyQV8rkBg
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:${services.keycloak.port}/realms/myrealm
