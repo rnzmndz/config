@@ -3,6 +3,8 @@ services:
     port: 8761
   api-gateway:
     port: 8080
+  keycloak:
+    port: 8180
   auth-service:
     port: 8081
   employee-service:
@@ -11,7 +13,7 @@ services:
 eureka:
   client:
     service-url:
-      default-zone: http://localhost:8761/eureka/
+      default-zone: http://localhost:${services.eureka-server.port}/eureka/
   instance:
     prefer-ip-address: true
     
@@ -20,4 +22,4 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8180/realms/myrealm
+          issuer-uri: http://localhost:${services.keycloak.port}/realms/myrealm
