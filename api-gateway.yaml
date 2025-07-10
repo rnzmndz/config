@@ -60,14 +60,14 @@ spring:
               scope: openid
           provider:
             keycloak:
-              issuer-uri: http://localhost:8180/realms/myrealm
+              issuer-uri: http://localhost:${services.keycloak.port}/realms/myrealm
 
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:${services.eureka-server.port}/eureka/
 
 resilience4j:
   circuitbreaker:
