@@ -49,20 +49,6 @@ spring:
           filters:
             - RewritePath=/public/(?<segment>.*), /${segment}
 
-    security:
-      oauth2:
-        client:
-          registration:
-            keycloak:
-              client-id: spring-gateway
-              client-secret: your-secret
-              authorization-grant-type: authorization_code
-              redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
-              scope: openid
-          provider:
-            keycloak:
-              issuer-uri: http://localhost:${services.keycloak.port}/realms/myrealm
-
 eureka:
   client:
     register-with-eureka: true
