@@ -12,6 +12,8 @@ services:
 
 employee-service:
   token: Bearer service-token-12345-secret
+auth-service:
+  token: Bearer service-token-12345-secret
   
 eureka:
   client:
