@@ -1,11 +1,6 @@
 server:
   port: ${services.auth-service.port}
 
-keycloak:
-  token-uri: ${spring.security.oauth2.client.registration.provider.keycloak.issure-uri}/protocol/openid-connect/token
-  client-id: ${spring.security.oauth2.client.registration.keycloak.client-id}
-  client-secret: ${spring.security.oauth2.client.registration.keycloak.client-secret}
-
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/auth_database
