@@ -21,20 +21,6 @@ eureka:
       default-zone: http://localhost:${services.eureka-server.port}/eureka/
   instance:
     prefer-ip-address: true
-    
-spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          keycloak-client-credentials:
-            client-id: spring-gateway
-            client-secret: SiZ1oOLaSgnu3KEWbqb2FeqAyQV8rkBg
-            authorization-grant-type: client_credentials
-            provider: keycloak
-        provider:
-          keycloak:
-            token-uri: http://localhost:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
 
 keycloak:
   token-uri: http://localhost:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
