@@ -25,17 +25,13 @@ eureka:
 spring:
   security:
     oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:${services.keycloak.port}/realms/myrealm
       client:
         registration:
-          keycloak:
-            client-id: spring-gateway
+          keycloak-client-credentials:
+            client-id: internal-service
             client-secret: SiZ1oOLaSgnu3KEWbqb2FeqAyQV8rkBg
-            authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
-            scope: openid
+            authorization-grant-type: client_credentials
+            provider: keycloak
         provider:
           keycloak:
-            issuer-uri: http://localhost:${services.keycloak.port}/realms/myrealm
+            token-uri: http://localhost:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
