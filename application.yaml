@@ -34,10 +34,10 @@ spring:
             provider: keycloak
         provider:
           keycloak:
-            token-uri: http://localhost:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
+            token-uri: http://127.0.0.1:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:${services.keycloak.port}/realms/myrealm
+          issuer-uri: http://127.0.0.1:${services.keycloak.port}/realms/myrealm
 
 logging:
   level:
