@@ -39,12 +39,12 @@ spring:
         jwt:
           issuer-uri: http://127.0.0.1:${services.keycloak.port}/realms/myrealm
 
-logging:
-  level:
-    org.springframework.security.oauth2.client: DEBUG
-    org.springframework.web.client.RestTemplate: DEBUG
-    org.springframework.web: DEBUG
-    feign: DEBUG
+# logging:
+#   level:
+#     org.springframework.security.oauth2.client: DEBUG
+#     org.springframework.web.client.RestTemplate: DEBUG
+#     org.springframework.web: DEBUG
+#     feign: DEBUG
 
 feign:
   client:
