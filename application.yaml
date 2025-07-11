@@ -38,7 +38,15 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://127.0.0.1:${services.keycloak.port}/realms/myrealm
-
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        
 # logging:
 #   level:
 #     org.springframework.security.oauth2.client: DEBUG
