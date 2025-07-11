@@ -7,9 +7,6 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: none
         
 keycloak:
   server-uri: http://localhost:${services.keycloak.port}
