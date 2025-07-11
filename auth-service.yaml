@@ -9,6 +9,10 @@ spring:
     driver-class-name: org.postgresql.Driver
         
 keycloak:
+  server-uri: http://localhost:${services.keycloak.port}
   token-uri: http://localhost:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
+  realm: myrealm
   client-id: spring-gateway
   client-secret: YUeupundmb1RYhTNZgX3sNsaXCbviU7W
+  username: admin
+  password: admin
