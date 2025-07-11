@@ -16,6 +16,6 @@ keycloak:
   token-uri: http://localhost:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
   realm: myrealm
   client-id: spring-gateway
-  client-secret: YUeupundmb1RYhTNZgX3sNsaXCbviU7W
+  client-secret: d2xgUFAfbJzCKu9ztbz7q5AtkwUZvRuf
   username: admin
   password: admin
