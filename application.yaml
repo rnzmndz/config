@@ -29,7 +29,7 @@ spring:
         registration:
           keycloak-client-credentials:
             client-id: spring-gateway
-            client-secret: YUeupundmb1RYhTNZgX3sNsaXCbviU7W
+            client-secret: d2xgUFAfbJzCKu9ztbz7q5AtkwUZvRuf
             authorization-grant-type: client_credentials
             provider: keycloak
         provider:
