@@ -7,15 +7,6 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: create
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
         
 keycloak:
   token-uri: http://localhost:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
