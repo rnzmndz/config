@@ -49,13 +49,6 @@ spring:
           filters:
             - RewritePath=/public/(?<segment>.*), /${segment}
 
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      defaultZone: http://localhost:${services.eureka-server.port}/eureka/
-
 resilience4j:
   circuitbreaker:
     instances:
