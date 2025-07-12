@@ -13,7 +13,7 @@ services:
 eureka:
   client:
     service-url:
-      default-zone: http://127.0.0.1:${services.eureka-server.port}/eureka/
+      default-zone: http://localhost:${services.eureka-server.port}/eureka/
   instance:
     prefer-ip-address: true
 
