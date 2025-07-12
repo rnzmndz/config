@@ -12,8 +12,10 @@ services:
 
 eureka:
   client:
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
-      default-zone: http://localhost:${services.eureka-server.port}/eureka/
+      defaultZone: http://localhost:${services.eureka-server.port}/eureka/
   instance:
     prefer-ip-address: true
 
