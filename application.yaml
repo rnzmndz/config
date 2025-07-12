@@ -10,11 +10,6 @@ services:
   employee-service:
     port: 8082
 
-employee-service:
-  token: Bearer service-token-12345-secret
-auth-service:
-  token: Bearer service-token-12345-secret
-  
 eureka:
   client:
     service-url:
@@ -37,8 +32,8 @@ spring:
       client:
         registration:
           keycloak-client-credentials:
-            client-id: spring-gateway
-            client-secret: SiZ1oOLaSgnu3KEWbqb2FeqAyQV8rkBg
+            client-id: ${keycloak.client-id}
+            client-secret: ${keycloak.client-secret}
             authorization-grant-type: client_credentials
             provider: keycloak
         provider:
