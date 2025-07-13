@@ -1,7 +1,0 @@
-server:
-  port: ${services.eureka-server.port}
-
-# logging:
-#   level:
-#     com.netflix.eureka: OFF
-#     com.netflix.discovery: OFF
