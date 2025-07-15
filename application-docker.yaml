@@ -1,0 +1,55 @@
+services:
+  eureka-server:
+    port: 8761
+  api-gateway:
+    port: 8080
+  keycloak:
+    port: 8080  # inside Docker, Keycloak uses port 8080
+  auth-service:
+    port: 8081
+  employee-service:
+    port: 8082
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+keycloak:
+  server-uri: http://keycloak:8080
+  token-uri: http://keycloak:8080/realms/myrealm/protocol/openid-connect/token
+  realm: myrealm
+  client-id: spring-gateway
+  client-secret: x6mDuoCJETz9kIdRVU3U6ibWx6Jmfegq
+  username: admin
+  password: admin
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak-client-credentials:
+            client-id: ${keycloak.client-id}
+            client-secret: ${keycloak.client-secret}
+            authorization-grant-type: client_credentials
+            provider: keycloak
+        provider:
+          keycloak:
+            token-uri: http://keycloak:8080/realms/myrealm/protocol/openid-connect/token
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/realms/myrealm
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
