@@ -1,0 +1,71 @@
+server:
+  port: ${services.api-gateway.port}
+
+services:
+  api-gateway:
+    port: 8080
+  auth-service:
+    port: 8081
+  employee-service:
+    port: 8082
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: employee-service
+        url: /public/v3/api-docs/employee
+
+spring:
+  application:
+    name: api-gateway
+
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: ADMIN
+
+  cloud:
+    gateway:
+      default-filters:
+        - TokenRelay
+      routes:
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+
+        - id: employee-service
+          uri: lb://employee-service
+          predicates:
+            - Path=/employee-service/**
+          filters:
+            - RewritePath=/employee-service/(?<segment>.*), /${segment}
+            - TokenRelay
+            - name: CircuitBreaker
+              args:
+                name: employeeCircuitBreaker
+                fallbackUri: forward:/fallback
+
+        - id: employee-service-swagger
+          uri: lb://employee-service
+          predicates:
+            - Path=/public/swagger-ui/**, /public/v3/api-docs/**
+          filters:
+            - RewritePath=/public/(?<segment>.*), /${segment}
+
+        - id: swagger-config
+          uri: lb://employee-service
+          predicates:
+            - Path=/public/v3/api-docs/swagger-config
+          filters:
+            - RewritePath=/public/(?<segment>.*), /${segment}
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      employeeCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
