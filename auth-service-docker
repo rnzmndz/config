@@ -1,0 +1,9 @@
+server:
+  port: ${services.auth-service.port}
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/auth_database
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
