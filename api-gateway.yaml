@@ -4,8 +4,10 @@ server:
 springdoc:
   swagger-ui:
     urls:
-      - name: employee-service
-        url: /public/v3/api-docs/employee
+      - name: Employee Service
+        url: /employee-service/v3/api-docs
+      - name: Auth Service
+        url: /auth-service/v3/api-docs
 
 
 spring:
