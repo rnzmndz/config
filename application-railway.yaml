@@ -1,23 +1,12 @@
 services:
-  eureka-server:
-    url: https://affectionate-tranquility-production.up.railway.app/
   api-gateway:
     url: 8080
   keycloak:
-    url: https://keycloak-production-16d5.up.railway.app/
+    url: https://keycloak-production-16d5.up.railway.app
   auth-service:
     url: 8081
   employee-service:
     url: 8082
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: https://affectionate-tranquility-production.up.railway.app/eureka/
-  instance:
-    prefer-ip-address: true
 
 keycloak:
   server-uri: ${services.keycloak.url}
