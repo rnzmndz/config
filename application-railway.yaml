@@ -1,0 +1,68 @@
+services:
+  eureka-server:
+    url: https://affectionate-tranquility-production.up.railway.app/
+  api-gateway:
+    url: 8080
+  keycloak:
+    url: https://keycloak-production-16d5.up.railway.app/
+  auth-service:
+    url: 8081
+  employee-service:
+    url: 8082
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: https://affectionate-tranquility-production.up.railway.app/eureka/
+  instance:
+    prefer-ip-address: true
+
+keycloak:
+  server-uri: ${services.keycloak.url}
+  token-uri: ${services.keycloak.url}/realms/myrealm/protocol/openid-connect/token
+  realm: myrealm
+  client-id: spring-gateway
+  client-secret: x6mDuoCJETz9kIdRVU3U6ibWx6Jmfegq
+  username: admin
+  password: admin
+    
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak-client-credentials:
+            client-id: ${keycloak.client-id}
+            client-secret: ${keycloak.client-secret}
+            authorization-grant-type: client_credentials
+            provider: keycloak
+        provider:
+          keycloak:
+            token-uri: ${services.keycloak.url}/realms/myrealm/protocol/openid-connect/token
+      resourceserver:
+        jwt:
+          issuer-uri: ${services.keycloak.url}/realms/myrealm
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        
+# logging:
+#   level:
+#     org.springframework.security.oauth2.client: DEBUG
+#     org.springframework.web.client.RestTemplate: DEBUG
+#     org.springframework.web: DEBUG
+#     feign: DEBUG
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 3000
+        readTimeout: 5000
