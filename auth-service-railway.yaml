@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres.railway.internal:5432/auth_database
+    username: postgres
+    password: ecTlclYgvZXVisfZHHPeyUAHLKnzVRWS
+    driver-class-name: org.postgresql.Driver
