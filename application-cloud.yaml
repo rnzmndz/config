@@ -4,7 +4,7 @@ services:
   keycloak:
     url: https://keycloak-production-16d5.up.railway.app
   auth-service:
-    url: 8081
+    url: https://microservice-project-k37f.onrender.com
   employee-service:
     url: 8082
 
