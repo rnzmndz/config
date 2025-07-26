@@ -6,7 +6,7 @@ services:
   auth-service:
     url: https://microservice-project-k37f.onrender.com
   employee-service:
-    url: 8082
+    url: https://employee-service-yblh.onrender.com
 
 keycloak:
   server-uri: ${services.keycloak.url}
