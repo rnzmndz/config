@@ -2,9 +2,9 @@ springdoc:
   swagger-ui:
     urls:
       - name: Employee Service
-        url: /employee-service/v3/api-docs
+        url: /public/v3/api-docs/employee
       - name: Auth Service
-        url: /auth-service/v3/api-docs
+        url: /public/v3/api-docs/auth
 
 spring:
   application:
