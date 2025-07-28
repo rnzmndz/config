@@ -1,6 +1,6 @@
 services:
   api-gateway:
-    url: 8080
+    url: https://api-gateway-wdrf.onrender.com
   keycloak:
     url: https://keycloak-production-16d5.up.railway.app
   auth-service:
