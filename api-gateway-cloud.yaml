@@ -1,5 +1,11 @@
 springdoc:
+  show-actuator: false
+  api-docs:
+    path: /v3/api-docs
   swagger-ui:
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+    operationsSorter: method
     urls:
       - name: Employee Service
         url: /public/v3/api-docs/employee
