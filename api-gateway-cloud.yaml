@@ -39,15 +39,18 @@ spring:
         - id: auth-service
           uri: ${AUTH_SERVICE_URL:http://localhost:8081}
           predicates:
-            - Path=/auth-service/**
-          filters:
-            - RewritePath=/auth-service/(?<segment>.*), /${segment}
+            - Path=/auth/**
+          # predicates:
+          #   - Path=/auth-service/**
+          # filters:
+          #   - RewritePath=/auth-service/(?<segment>.*), /${segment}
         - id: employee-service
           uri: ${EMPLOYEE_SERVICE_URL:http://localhost:8082}
           predicates:
-            - Path=/employee-service/**
+            - Path=/api/v1/employees/**
+            # - Path=/employee-service/**
           filters:
-            - RewritePath=/employee-service/(?<segment>.*), /${segment}
+            # - RewritePath=/employee-service/(?<segment>.*), /${segment}
             - TokenRelay
             - name: CircuitBreaker
               args:
