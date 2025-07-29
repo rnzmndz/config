@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d21nn9qdbo4c73edgsjg-a:5432/auth_database
-    username: postgres_data_ls95_user
-    password: Lyz23xy8wXF7mgADQhsJfW9a6gQoY7YO
+    url: jdbc:postgresql://${postgres.hostname}:${postgres.port}/auth_database
+    username: ${postgres.username}
+    password: ${postgres.password}
     driver-class-name: org.postgresql.Driver

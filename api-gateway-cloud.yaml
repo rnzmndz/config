@@ -11,11 +11,6 @@ springdoc:
 spring:
   application:
     name: api-gateway
-  security:
-    user:
-      name: admin
-      password: admin
-      roles: ADMIN
   cloud:
     gateway:
       globalcors:
@@ -37,7 +32,7 @@ spring:
         - TokenRelay
       routes:
         - id: auth-service
-          uri: ${AUTH_SERVICE_URL:http://localhost:8081}
+          uri: ${services.auth-service.url}
           predicates:
             - Path=/auth/**
           # predicates:
@@ -45,7 +40,7 @@ spring:
           # filters:
           #   - RewritePath=/auth-service/(?<segment>.*), /${segment}
         - id: employee-service
-          uri: ${EMPLOYEE_SERVICE_URL:http://localhost:8082}
+          uri: ${services.employee-service.url}
           predicates:
             - Path=/api/v1/employees/**
             # - Path=/employee-service/**
@@ -57,13 +52,13 @@ spring:
                 name: employeeCircuitBreaker
                 fallbackUri: forward:/fallback
         - id: auth-service-swagger
-          uri: ${AUTH_SERVICE_URL:http://localhost:8081}
+          uri: ${services.auth-service.url}
           predicates:
             - Path=/public/v3/api-docs/auth
           filters:
             - SetPath=/v3/api-docs
         - id: employee-service-swagger
-          uri: ${EMPLOYEE_SERVICE_URL:http://localhost:8082}
+          uri: ${services.employee-service.url}
           predicates:
             - Path=/public/v3/api-docs/employee
           filters:
