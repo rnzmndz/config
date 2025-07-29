@@ -4,9 +4,9 @@ services:
   keycloak:
     url: ${KEYCLOAK_URL:http://localhost:8180}
   auth-service:
-    url: ${AUTH_SERVICE:http://localhost:8081}
+    url: ${AUTH_SERVICE_URL:http://localhost:8081}
   employee-service:
-    url: ${EMPLOYEE_SERVICE:http://localhost:8082}
+    url: ${EMPLOYEE_SERVICE_URL:http://localhost:8082}
 
 postgres:
   hostname: ${POSTGRES_HOST_NAME:localhost}
@@ -15,8 +15,8 @@ postgres:
   password: ${POSTGRES_PASSWORD:postgres}
 
 keycloak:
-  server-uri: ${KEYCLOAK_URL:${services.keycloak.url}}
-  token-uri: ${KEYCLOAK_URL:${services.keycloak.url}}/realms/myrealm/protocol/openid-connect/token
+  server-uri: ${services.keycloak.url}
+  token-uri: ${services.keycloak.url}/realms/myrealm/protocol/openid-connect/token
   realm: ${KEYCLOAK_REAL:myrealm}
   client-id: ${KEYCLOAK_CLIENT_ID:spring-gateway}
   client-secret: ${KEYCLOAK_CLIENT_SECRET:x6mDuoCJETz9kIdRVU3U6ibWx6Jmfegq}
@@ -35,10 +35,10 @@ spring:
             provider: keycloak
         provider:
           keycloak:
-            token-uri: ${KEYCLOAK_URL:${services.keycloak.url}}/realms/myrealm/protocol/openid-connect/token
+            token-uri: ${services.keycloak.url}/realms/myrealm/protocol/openid-connect/token
       resourceserver:
         jwt:
-          issuer-uri: ${KEYCLOAK_URL:${services.keycloak.url}}/realms/myrealm
+          issuer-uri: ${services.keycloak.url}/realms/myrealm
   jpa:
     hibernate:
       ddl-auto: create
