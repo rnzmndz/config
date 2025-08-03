@@ -1,7 +1,9 @@
 server:
   port: ${services.auth-service.port}
 
-
+springdoc:
+  swagger-ui:
+    path: /
 # spring:
 #   datasource:
 #     url: jdbc:postgresql://localhost:5432/auth_database
