@@ -1,5 +1,5 @@
-# server:
-#   port: ${services.auth-service.port}
+server:
+  port: ${services.auth-service.port}
 
 # spring:
 #   datasource:
