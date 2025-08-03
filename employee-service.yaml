@@ -3,7 +3,7 @@ springdoc:
     path: /
 
 spring:
-  datasource:
+  
   jpa:
     hibernate:
       ddl-auto: create
@@ -12,6 +12,7 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
     url: jdbc:postgresql://localhost:5432/employee_database
     username: postgres
     password: postgres
