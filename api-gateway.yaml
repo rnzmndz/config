@@ -1,8 +1,10 @@
 server:
   port: ${services.api-gateway.port}
+    
 
 springdoc:
   swagger-ui:
+    path: /
     urls:
       - name: Employee Service
         url: /employee-service/v3/api-docs
