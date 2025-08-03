@@ -2,12 +2,12 @@ springdoc:
   swagger-ui:
     path: /
 
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/employee_database
-    username: postgres
-    password: postgres
-    driver-class-name: org.postgresql.Driver
+# spring:
+#   datasource:
+#     url: jdbc:postgresql://localhost:5432/employee_database
+#     username: postgres
+#     password: postgres
+#     driver-class-name: org.postgresql.Driver
 
 server:
   port: ${services.employee-service.port}
