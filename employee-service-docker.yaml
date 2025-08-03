@@ -3,7 +3,7 @@ springdoc:
     path: /
 
 spring:
-jpa:
+  jpa:
     hibernate:
       ddl-auto: create
     show-sql: true
@@ -11,11 +11,11 @@ jpa:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    url: jdbc:postgresql://postgres:5432/employee_database
-    username: postgres
-    password: postgres
-    driver-class-name: org.postgresql.Driver
+    datasource:
+      url: jdbc:postgresql://postgres:5432/employee_database
+      username: postgres
+      password: postgres
+      driver-class-name: org.postgresql.Driver
 
 server:
   port: ${services.employee-service.port}
