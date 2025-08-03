@@ -1,9 +1,6 @@
 server:
   port: ${services.auth-service.port}
 
-springdoc:
-  swagger-ui:
-    path: /
 
 # spring:
 #   datasource:
