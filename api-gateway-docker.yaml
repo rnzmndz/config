@@ -62,6 +62,7 @@ spring:
           filters:
             # - RewritePath=/employee-service/(?<segment>.*), /${segment}
             - TokenRelay
+            - PreserveHostHeader
             - name: CircuitBreaker
               args:
                 name: employeeCircuitBreaker
@@ -78,6 +79,7 @@ spring:
             - Path=/api-docs/auth-service
           filters:
             - RewritePath=/api-docs/auth-service, /v3/api-docs
+            - PreserveHostHeader
 
         
 resilience4j:
