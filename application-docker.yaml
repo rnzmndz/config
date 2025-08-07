@@ -33,7 +33,7 @@ spring:
     oauth2:
       client:
         registration:
-          keycloak-client-credentials:
+          keycloak:
             client-id: ${keycloak.client-id}
             client-secret: ${keycloak.client-secret}
             authorization-grant-type: authorization_code #client_credentials
