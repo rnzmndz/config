@@ -42,7 +42,7 @@ spring:
             # provider: keycloak
         provider:
           keycloak:
-            token-uri: http://keycloak:8080/realms/myrealm
+            issuer-uri: http://keycloak:8080/realms/myrealm
       resourceserver:
         jwt:
           issuer-uri: http://keycloak:8080/realms/myrealm
