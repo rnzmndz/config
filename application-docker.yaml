@@ -36,8 +36,10 @@ spring:
           keycloak-client-credentials:
             client-id: ${keycloak.client-id}
             client-secret: ${keycloak.client-secret}
-            authorization-grant-type: client_credentials
-            provider: keycloak
+            authorization-grant-type: authorization_code #client_credentials
+            redirect-uri:  http://keycloak:8080/login/oauth2/code/keycloak # additional
+            scope: openid, profile #additional
+            # provider: keycloak
         provider:
           keycloak:
             token-uri: http://keycloak:8080/realms/myrealm/protocol/openid-connect/token
