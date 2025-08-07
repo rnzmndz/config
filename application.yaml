@@ -21,7 +21,7 @@ eureka:
 
 keycloak:
   server-uri: http://127.0.0.1:${services.keycloak.port}
-  token-uri: http://127.0.0.1:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
+  token-uri: http://127.0.0.1:${services.keycloak.port}/realms/myrealm # http://127.0.0.1:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
   realm: myrealm
   client-id: spring-gateway
   client-secret: x6mDuoCJETz9kIdRVU3U6ibWx6Jmfegq
@@ -33,16 +33,16 @@ spring:
     oauth2:
       client:
         registration:
-          keycloak-client-credentials:
+          keycloak:
             client-id: ${keycloak.client-id}
             client-secret: ${keycloak.client-secret}
             authorization-grant-type: authorization_code # client_credentials
-            redirect-uri: http://127.0.0.1:${services.keycloak.port}/login/oauth2/code/keycloak # additional
+            redirect-uri: http://localhost:8080/login/oauth2/code/keycloak # additional
             # provider: keycloak 
             scope: openid, profile # additional
         provider:
           keycloak:
-            token-uri: http://127.0.0.1:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
+            token-uri: http://127.0.0.1:${services.keycloak.port}/realms/myrealm # http://127.0.0.1:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
       resourceserver:
         jwt:
           issuer-uri: http://127.0.0.1:${services.keycloak.port}/realms/myrealm
