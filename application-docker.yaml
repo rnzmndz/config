@@ -47,7 +47,7 @@ spring:
             provider: keycloak
         provider:
           keycloak:
-            issuer-uri: http://keycloak:8080/realms/myrealm
+            issuer-uri: http://keycloak:8080/realms/myrealm/protocol/openid-connect/token
       resourceserver:
         jwt:
           issuer-uri: http://keycloak:8080/realms/myrealm
