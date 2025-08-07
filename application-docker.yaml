@@ -46,7 +46,7 @@ spring:
             authorization-grant-type: client_credentials
             redirect-uri:  http://localhost:8080/login/oauth2/code/keycloak # additional
             scope: openid, profile #additional
-            # provider: keycloak
+            provider: keycloak
         provider:
           keycloak:
             issuer-uri: http://keycloak:8080/realms/myrealm
