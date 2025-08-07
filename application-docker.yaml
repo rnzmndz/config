@@ -33,16 +33,16 @@ spring:
     oauth2:
       client:
         registration:
-          keycloak-client-credentials:
+          keycloak:
             client-id: ${keycloak.client-id}
             client-secret: ${keycloak.client-secret}
             authorization-grant-type: authorization_code #client_credentials
-            redirect-uri:  http://keycloak:8080/login/oauth2/code/keycloak # additional
+            redirect-uri:  http://localhost:8080/login/oauth2/code/keycloak # additional
             scope: openid, profile #additional
             # provider: keycloak
         provider:
           keycloak:
-            token-uri: http://keycloak:8080/realms/myrealm/protocol/openid-connect/token
+            token-uri: http://keycloak:8080/realms/myrealm
       resourceserver:
         jwt:
           issuer-uri: http://keycloak:8080/realms/myrealm
