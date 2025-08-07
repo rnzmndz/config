@@ -21,7 +21,7 @@ eureka:
 
 keycloak:
   server-uri: http://keycloak:8080
-  token-uri: http://keycloak:8080/realms/myrealm/protocol/openid-connect/token
+  token-uri: http://keycloak:8080/realms/myrealm #http://keycloak:8080/realms/myrealm/protocol/openid-connect/token
   realm: myrealm
   client-id: spring-gateway
   client-secret: x6mDuoCJETz9kIdRVU3U6ibWx6Jmfegq
