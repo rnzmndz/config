@@ -52,7 +52,6 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://keycloak:8080/realms/myrealm
-          audiences: spring-gateway,auth-service
   jpa:
     hibernate:
        ddl-auto: create
