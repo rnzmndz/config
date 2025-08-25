@@ -10,6 +10,9 @@ services:
   employee-service:
     port: 8082
 
+server:
+  address: 0.0.0.0
+
 eureka:
   client:
     register-with-eureka: true
