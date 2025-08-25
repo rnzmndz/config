@@ -23,40 +23,20 @@ spring:
 
   cloud:
     gateway:
-      # globalcors:
-      #   corsConfigurations:
-      #     '[/**]':
-      #        allowedOrigins:
-      #          - "http://localhost:4200"
-      #          - "http://37.60.230.21:8080"
-      #        allowedMethods:
-      #          - GET
-      #          - POST
-      #          - PATCH
-      #          - PUT
-      #          - DELETE
-      #          - OPTIONS
-      #        allowedHeaders:
-      #          - "*"
-      #        allowCredentials: true
-      default-filters:
-        - TokenRelay
+      # default-filters:
+      #   - TokenRelay
       routes:
         - id: auth-service
           uri: lb://auth-service
           predicates:
             - Path=/auth/**
-          # filters:
-          #   - RewritePath=/auth-service/(?<segment>.*), /${segment}
-
+         
         - id: employee-service
           uri: lb://employee-service
           predicates:
             - Path=/api/v1/**
           filters:
-            # - RewritePath=/employee-service/(?<segment>.*), /${segment}
             - TokenRelay
-            # - PreserveHostHeader
             - name: CircuitBreaker
               args:
                 name: employeeCircuitBreaker
