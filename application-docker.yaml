@@ -23,8 +23,8 @@ eureka:
     prefer-ip-address: true
 
 keycloak:
-  server-uri: http://keycloak:8080
-  token-uri: http://keycloak:8080/realms/myrealm/protocol/openid-connect/token
+  server-uri: https://auth.renzoproject.site #http://keycloak:8080
+  token-uri: https://auth.renzoproject.site/realms/myrealm/protocol/openid-connect/token
   realm: myrealm
   client-id: spring-gateway
   client-secret: x6mDuoCJETz9kIdRVU3U6ibWx6Jmfegq
@@ -50,11 +50,11 @@ spring:
             provider: keycloak
         provider:
           keycloak:
-            issuer-uri: http://keycloak:8080/realms/myrealm
-            token-uri: http://keycloak:8080/realms/myrealm/protocol/openid-connect/token
+            issuer-uri: https://auth.renzoproject.site/realms/myrealm
+            token-uri: https://auth.renzoproject.site/realms/myrealm/protocol/openid-connect/token
       resourceserver:
         jwt:
-          issuer-uri: http://keycloak:8080/realms/myrealm
+          issuer-uri: https://auth.renzoproject.site/realms/myrealm
   jpa:
     hibernate:
        ddl-auto: create
