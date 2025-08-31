@@ -1,33 +1,27 @@
 services:
   eureka-server:
-    port: 8761
-  api-gateway:
-    port: 8080
+    url: ${EUREKA_URL:http://localhost:8761/eureka/}
   keycloak:
-    port: 8180
-  auth-service:
-    port: 8081
-  employee-service:
-    port: 8082
+    url: ${KEYCLOAK_URL:http://127.0.0.1:8180}
 
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${services.eureka-server.url}
   instance:
     prefer-ip-address: true
 
 keycloak:
-  server-uri: http://127.0.0.1:${services.keycloak.port}
-  token-uri: http://127.0.0.1:${services.keycloak.port}/realms/myrealm # http://127.0.0.1:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
-  realm: myrealm
-  client-id: spring-gateway
-  client-secret: x6mDuoCJETz9kIdRVU3U6ibWx6Jmfegq
-  username: admin
-  password: admin
-    
+  server-uri: ${services.keycloak.url}
+  token-uri: ${services.keycloak.url}/realms/myrealm # http://127.0.0.1:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
+  realm: ${KC_REALM:myrealm}
+  client-id: ${KC_CLIENT_ID:spring-gateway}
+  client-secret: ${KC_CLIENT_SECRET:x6mDuoCJETz9kIdRVU3U6ibWx6Jmfegq }
+  username: ${KC_USERNAME:admin }
+  password: ${KC_PASSWORD:admin}
+
 spring:
   security:
     oauth2:
@@ -36,26 +30,31 @@ spring:
           keycloak:
             client-id: ${keycloak.client-id}
             client-secret: ${keycloak.client-secret}
-            authorization-grant-type: authorization_code # client_credentials
+            authorization-grant-type: authorization_code #client_credentials
             redirect-uri: http://localhost:8080/login/oauth2/code/keycloak # additional
-            # provider: keycloak 
-            scope: openid, profile # additional
+            scope: openid, profile #additional
+            # provider: keycloak
+          keycloak-service:
+            client-id: ${keycloak.client-id}
+            client-secret: ${keycloak.client-secret}
+            authorization-grant-type: client_credentials
+            provider: keycloak
         provider:
           keycloak:
-            token-uri: http://127.0.0.1:${services.keycloak.port}/realms/myrealm # http://127.0.0.1:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
+            issuer-uri: ${services.keycloak.url}/realms/myrealm
+            token-uri: ${services.keycloak.url}/realms/myrealm/protocol/openid-connect/token
       resourceserver:
         jwt:
-          issuer-uri: http://127.0.0.1:${services.keycloak.port}/realms/myrealm
+          issuer-uri: ${services.keycloak.url}/realms/myrealm
   jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
       hibernate:
-         ddl-auto: create
-      show-sql: true
-      properties:
-          hibernate:
-            format_sql: true
-            dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
-        
 # logging:
 #   level:
 #     org.springframework.security.oauth2.client: DEBUG
@@ -63,10 +62,18 @@ spring:
 #     org.springframework.web: DEBUG
 #     feign: DEBUG
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always
+
 feign:
   client:
     config:
       default:
         connectTimeout: 3000
         readTimeout: 5000
-        

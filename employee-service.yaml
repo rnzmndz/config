@@ -1,19 +1,19 @@
+server:
+  port: ${EMPLOYEE_PORT:8080}
+
 springdoc:
   swagger-ui:
     path: /
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/employee_database
-    username: postgres
-    password: postgres
+    url: ${DB_URL:jdbc:postgresql://localhost:5432}/employee_database
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
 
-server:
-  port: ${services.employee-service.port}
-  
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: '*'

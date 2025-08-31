@@ -1,51 +1,33 @@
 server:
-  port: ${services.api-gateway.port}
-    
+  port: ${API_GATEWAY_PORT:8080}
 
 springdoc:
   swagger-ui:
     path: /
     urls:
       - name: Employee Service
-        url: /employee-service/v3/api-docs
+        url: /api-docs/employee-service
       - name: Auth Service
-        url: /auth-service/v3/api-docs
-
+        url: /api-docs/auth-service
 
 spring:
   application:
     name: api-gateway
   cloud:
     gateway:
-      # globalcors:
-      #   corsConfigurations:
-      #     '[/**]':
-      #       allowedOrigins:
-      #         - "http://localhost:4200"
-      #       allowedMethods:
-      #         - GET
-      #         - POST
-      #         - PUT
-      #         - DELETE
-      #         - OPTIONS
-      #       allowedHeaders:
-      #         - "*"
-      #       allowCredentials: true
       default-filters:
         - TokenRelay
       routes:
         - id: auth-service
           uri: lb://auth-service
           predicates:
-            - Path=/auth-service/**
-          filters:
-            - RewritePath=/auth-service/(?<segment>.*), /${segment}
+            - Path=/auth/**
+
         - id: employee-service
           uri: lb://employee-service
           predicates:
-            - Path=/employee-service/**
+            - Path=/api/v1/**
           filters:
-            - RewritePath=/employee-service/(?<segment>.*), /${segment}
             - TokenRelay
             - name: CircuitBreaker
               args:
@@ -54,15 +36,15 @@ spring:
         - id: employee-service-swagger
           uri: lb://employee-service
           predicates:
-            - Path=/public/swagger-ui/**, /public/v3/api-docs/**
+            - Path=/api-docs/employee-service
           filters:
-            - RewritePath=/public/(?<segment>.*), /${segment}
-        - id: swagger-config
-          uri: lb://employee-service
+            - RewritePath=/api-docs/employee-service, /v3/api-docs
+        - id: auth-service-swagger
+          uri: lb://auth-service
           predicates:
-            - Path=/public/v3/api-docs/swagger-config
+            - Path=/api-docs/auth-service
           filters:
-            - RewritePath=/public/(?<segment>.*), /${segment}
+            - RewritePath=/api-docs/auth-service, /v3/api-docs
 
 resilience4j:
   circuitbreaker:
