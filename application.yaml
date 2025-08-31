@@ -41,11 +41,11 @@ spring:
             provider: keycloak
         provider:
           keycloak:
-            issuer-uri: ${services.keycloak.url}/realms/myrealm
-            token-uri: ${services.keycloak.url}/realms/myrealm/protocol/openid-connect/token
+            issuer-uri: ${KEYCLOAK_URL:http://127.0.0.1:8180}/realms/myrealm
+            token-uri: ${KEYCLOAK_URL:http://127.0.0.1:8180}/realms/myrealm/protocol/openid-connect/token
       resourceserver:
         jwt:
-          issuer-uri: ${services.keycloak.url}/realms/myrealm
+          issuer-uri: ${KEYCLOAK_URL:http://127.0.0.1:8180}/realms/myrealm
   jpa:
     hibernate:
       ddl-auto: create
