@@ -28,15 +28,15 @@ spring:
       client:
         registration:
           keycloak:
-            client-id: ${keycloak.client-id}
-            client-secret: ${keycloak.client-secret}
+            client-id: ${KC_CLIENT_ID:default-client}
+            client-secret: ${KC_CLIENT_SECRET:default-secret}
             authorization-grant-type: authorization_code #client_credentials
             redirect-uri: http://localhost:8080/login/oauth2/code/keycloak # additional
             scope: openid, profile #additional
             # provider: keycloak
           keycloak-service:
-            client-id: ${keycloak.client-id}
-            client-secret: ${keycloak.client-secret}
+            client-id: ${KC_CLIENT_ID:default-client}
+            client-secret: ${KC_CLIENT_SECRET:default-secret}
             authorization-grant-type: client_credentials
             provider: keycloak
         provider:
