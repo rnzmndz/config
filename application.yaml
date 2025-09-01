@@ -15,7 +15,7 @@ eureka:
 
 keycloak:
   server-uri: ${services.keycloak.url}
-  token-uri: ${services.keycloak.url}/realms/myrealm # http://127.0.0.1:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
+  token-uri: ${services.keycloak.url}/realms/myrealm/protocol/openid-connect/token # http://127.0.0.1:${services.keycloak.port}/realms/myrealm/protocol/openid-connect/token
   realm: ${KC_REALM:myrealm}
   client-id: ${KC_CLIENT_ID:spring-gateway}
   client-secret: ${KC_CLIENT_SECRET:x6mDuoCJETz9kIdRVU3U6ibWx6Jmfegq }
